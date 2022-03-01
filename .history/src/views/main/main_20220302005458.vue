@@ -10,7 +10,9 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  components: {},
+  components: {
+    ElButton
+  },
   setup() {
     return {}
   }

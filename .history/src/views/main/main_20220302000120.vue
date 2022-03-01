@@ -8,9 +8,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { ElButton } from 'element-plus'
 
 export default defineComponent({
-  components: {},
+  components: {
+    // 注册 ElButton 组件
+    ElButton
+  }
   setup() {
     return {}
   }

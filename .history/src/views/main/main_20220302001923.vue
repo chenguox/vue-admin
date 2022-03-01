@@ -8,9 +8,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { ElButton } from 'element-plus'
+element-plus/theme-chalk/${name}.css
 
 export default defineComponent({
-  components: {},
+  components: {
+    ElButton
+  },
   setup() {
     return {}
   }
