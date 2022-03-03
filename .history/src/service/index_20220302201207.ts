@@ -1,0 +1,4 @@
+//
+import GXRequest from "./request";
+
+//
