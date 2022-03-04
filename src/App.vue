@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <router-link to="/login">登录</router-link>
+    <!-- <router-link to="/login">登录</router-link>
     <router-link to="/main">首页</router-link>
-    <h2>{{ $store.state.name }}</h2>
+    <h2>{{ $store.state.name }}</h2> -->
     <router-view></router-view>
   </div>
 </template>
@@ -23,6 +23,6 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  // margin-top: 60px;
 }
 </style>
