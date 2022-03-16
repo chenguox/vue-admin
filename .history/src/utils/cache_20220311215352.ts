@@ -1,0 +1,4 @@
+class LocalCache {
+  getCache
+  setCache
+}

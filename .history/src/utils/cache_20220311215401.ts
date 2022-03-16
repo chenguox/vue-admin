@@ -1,0 +1,6 @@
+class LocalCache {
+  getCache(){
+
+  }
+  setCache()
+}
