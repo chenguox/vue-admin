@@ -46,5 +46,7 @@ export default defineComponent({
     font-size: 30px;
     cursor: pointer;
   }
+  .content {
+  }
 }
 </style>

@@ -51,6 +51,7 @@ export default defineComponent({
 <style scoped lang="less">
 .user-info {
   display: flex;
+  ju
   align-items: center;
   .operation {
     margin-right: 20px;
@@ -60,7 +61,6 @@ export default defineComponent({
       width: 40px;
       height: 35px;
       line-height: 35px;
-      text-align: center;
       &:hover {
         background: #f2f2f2;
       }

@@ -60,7 +60,7 @@ export default defineComponent({
       width: 40px;
       height: 35px;
       line-height: 35px;
-      text-align: center;
+      text-a
       &:hover {
         background: #f2f2f2;
       }

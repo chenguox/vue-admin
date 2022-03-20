@@ -6,6 +6,7 @@
       @click="handleFoldClick"
     ></i>
     <div class="content">
+
       <user-info />
     </div>
   </div>
@@ -45,6 +46,11 @@ export default defineComponent({
   .fold-menu {
     font-size: 30px;
     cursor: pointer;
+  }
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>

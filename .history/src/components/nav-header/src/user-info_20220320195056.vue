@@ -53,15 +53,13 @@ export default defineComponent({
   display: flex;
   align-items: center;
   .operation {
-    margin-right: 20px;
     span {
       position: relative;
       display: inline-block;
       width: 40px;
       height: 35px;
       line-height: 35px;
-      text-align: center;
-      &:hover {
+       &:hover {
         background: #f2f2f2;
       }
 
@@ -79,6 +77,7 @@ export default defineComponent({
         background: red;
         border-radius: 100%;
       }
+    }
     }
   }
 

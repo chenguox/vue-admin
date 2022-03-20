@@ -46,5 +46,10 @@ export default defineComponent({
     font-size: 30px;
     cursor: pointer;
   }
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

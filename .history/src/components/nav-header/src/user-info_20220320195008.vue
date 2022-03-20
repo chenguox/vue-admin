@@ -52,35 +52,7 @@ export default defineComponent({
 .user-info {
   display: flex;
   align-items: center;
-  .operation {
-    margin-right: 20px;
-    span {
-      position: relative;
-      display: inline-block;
-      width: 40px;
-      height: 35px;
-      line-height: 35px;
-      text-align: center;
-      &:hover {
-        background: #f2f2f2;
-      }
 
-      i {
-        font-size: 20px;
-      }
-
-      .dot {
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        z-index: 10;
-        width: 6px;
-        height: 6px;
-        background: red;
-        border-radius: 100%;
-      }
-    }
-  }
 
   .el-dropdown-link {
     cursor: pointer;
