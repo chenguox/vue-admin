@@ -34,7 +34,7 @@ const loginModule: Module<ILoginState, IRootState> = {
       state.userMenus = userMenus
       // 注册动态路由
       const routes = mapMenusToRoutes(userMenus)
-      console.log(routes)
+      // console.log(routes)
 
       // 将routes => router.main.children
       routes.forEach((route) => {
@@ -62,7 +62,7 @@ const loginModule: Module<ILoginState, IRootState> = {
       const userMenus = userMenusResult.data
       commit('changeUserMenus', userMenus)
       localCache.setCache('userMenus', userMenus)
-      console.log(userMenusResult)
+      // console.log(userMenusResult)
 
       // 4、跳到首页
       router.push('/main')

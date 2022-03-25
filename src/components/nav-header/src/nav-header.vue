@@ -6,17 +6,25 @@
       @click="handleFoldClick"
     ></i>
     <div class="content">
+      <gx-breadcrumb :breadcrumbs="breadcrumbs" />
       <user-info />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
+import { useStore } from '@/store'
+import { useRoute } from 'vue-router'
+
+import { pathMapBreadcrumb } from '@/utils/map-menus'
+
+import GxBreadcrumb, { IBreadcrumb } from '@/base-ui/breadcrumb'
 import UserInfo from './user-info.vue'
 
 export default defineComponent({
   components: {
+    GxBreadcrumb,
     UserInfo
   },
   emits: ['foldChange'],
@@ -27,8 +35,19 @@ export default defineComponent({
       console.log('handleFoldClick', isFold.value)
       emit('foldChange', isFold.value)
     }
+
+    // 面包屑的数据 [{name:'',paht:''},{}]
+    const store = useStore()
+    const breadcrumbs = computed(() => {
+      const userMenu = store.state.login.userMenus
+      const route = useRoute()
+      const currentPath = route.path
+      return pathMapBreadcrumb(userMenu, currentPath)
+    })
+
     return {
       isFold,
+      breadcrumbs,
       handleFoldClick
     }
   }
@@ -45,6 +64,13 @@ export default defineComponent({
   .fold-menu {
     font-size: 30px;
     cursor: pointer;
+  }
+  .content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
   }
 }
 </style>

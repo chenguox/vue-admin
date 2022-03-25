@@ -16,7 +16,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const isFold = ref(false)
     const handleFoldClick = () => {
-      console.log('---')
+      // console.log('---')
       isFold.value = !isFold.value
       emit('foldChange', isFold.value)
     }
