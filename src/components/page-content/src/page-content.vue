@@ -53,10 +53,6 @@ export default defineComponent({
     const dataList = computed(() => {
       return store.getters['system/pageListData'](props.pageName)
     })
-    // const dataList = computed(() =>
-    //   store.getters[`system/pageListData`](props.pageName)
-    // )
-    // const dataList = computed(() => store.state.system.usersList)
 
     return {
       dataList
