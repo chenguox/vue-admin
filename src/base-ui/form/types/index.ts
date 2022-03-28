@@ -12,4 +12,6 @@ export interface IFormItem {
   rule?: any[]
   placeholder?: any
   options?: any[]
+  // 针对特殊的属性
+  otherOptions?: any
 }

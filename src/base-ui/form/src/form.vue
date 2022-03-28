@@ -25,11 +25,9 @@
               <template v-else-if="item.type === 'datepicker'">
                 <el-date-picker
                   style="width: 100%"
-                  start-placeholder="Start Date"
-                  end-placeholder="End Date"
-                  :default-value="[new Date(2010, 9, 1), new Date(2010, 10, 1)]"
+                  v-bind="item.otherOptions"
                   v-model="formData[`${item.field}`]"
-                />
+                ></el-date-picker>
               </template>
             </el-form-item>
           </el-col>
