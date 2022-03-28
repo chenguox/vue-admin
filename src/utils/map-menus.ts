@@ -43,7 +43,7 @@ export function pathMapBreadcrumb(userMenus: any[], currentPath: string) {
     if (menu.type === 1) {
       const findMenu = pathMapToMenu(menu.children ?? [], currentPath)
       if (findMenu) {
-        console.log('menu', menu, 'findMenu', findMenu)
+        // console.log('menu', menu, 'findMenu', findMenu)
         breadcrumbs.push({ name: menu.name, path: menu.url })
         breadcrumbs.push({ name: findMenu.name, path: findMenu.url })
         return breadcrumbs
