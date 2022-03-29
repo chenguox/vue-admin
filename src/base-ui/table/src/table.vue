@@ -35,22 +35,19 @@
     </el-table>
 
     <!-- 分页 -->
-    <!-- <div class="footer" v-if="showFooter">
+    <div class="footer" v-if="showFooter">
       <slot name="footer">
         <el-pagination
-          v-model:currentPage="currentPage4"
-          v-model:page-size="pageSize4"
-          :page-sizes="[100, 200, 300, 400]"
-          :small="small"
-          :disabled="disabled"
-          :background="background"
           layout="total, sizes, prev, pager, next, jumper"
-          :total="400"
+          :current-page="page.currentPage"
+          :page-size="page.pageSize"
+          :page-sizes="[10, 20, 30]"
+          :total="listCount"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
         />
       </slot>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -67,6 +64,10 @@ export default defineComponent({
       type: Array,
       required: true
     },
+    listCount: {
+      type: Number,
+      default: 0
+    },
     propList: {
       type: Array,
       required: true
@@ -82,10 +83,26 @@ export default defineComponent({
     showFooter: {
       type: Boolean,
       default: true
+    },
+    page: {
+      type: Object,
+      default: () => ({ currentPage: 0, pageSize: 10 })
     }
   },
-  setup() {
-    return {}
+  emits: ['update:page'],
+  setup(props, { emit }) {
+    const handleCurrentChange = (currentPage: number) => {
+      emit('update:page', { ...props.page, currentPage })
+    }
+
+    const handleSizeChange = (pageSize: number) => {
+      emit('update:page', { ...props.page, pageSize })
+    }
+
+    return {
+      handleSizeChange,
+      handleCurrentChange
+    }
   }
 })
 </script>
