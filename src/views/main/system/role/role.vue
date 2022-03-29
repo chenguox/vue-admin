@@ -1,16 +1,45 @@
 <template>
   <div class="role">
-    <h2>role</h2>
+    <page-form
+      :searchFormConfig="searchFormConfig"
+      @resetBtnClick="handleResetClick"
+      @queryBtnClick="handleQueryClick"
+    ></page-form>
+    <page-content
+      ref="pageContentRef"
+      :contentTableConfig="contentTableConfig"
+      pageName="users"
+    ></page-content>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+
+import PageForm from '@/components/page-search'
+import PageContent from '@/components/page-content'
+
+import { searchFormConfig } from './config/search.config'
+import { contentTableConfig } from './config/content.config'
+
+import { usePageSearch } from '@/hooks/use-page-search'
 
 export default defineComponent({
   name: 'role',
+  components: {
+    PageForm,
+    PageContent
+  },
   setup() {
-    return {}
+    const [pageContentRef, handleResetClick, handleQueryClick] = usePageSearch()
+
+    return {
+      searchFormConfig,
+      contentTableConfig,
+      handleResetClick,
+      handleQueryClick,
+      pageContentRef
+    }
   }
 })
 </script>
