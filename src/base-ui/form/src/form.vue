@@ -1,6 +1,9 @@
 <template>
   <div class="gx-form">
-    <el-form :label-width="labelWidth" :v-model="formData">
+    <div class="header">
+      <slot name="header"></slot>
+    </div>
+    <el-form :label-width="labelWidth">
       <el-row>
         <template v-for="item in formItems" :key="item.label">
           <el-col v-bind="colLayout">
@@ -8,7 +11,8 @@
               <template v-if="item.type === 'input'">
                 <el-input
                   :placeholder="item.placeholder"
-                  v-model="formData[`${item.field}`]"
+                  :model-value="modelValue[`${item.field}`]"
+                  @update:modelValue="handleValueChange($event, item.field)"
                 />
               </template>
               <template v-else-if="item.type === 'select'">
@@ -34,6 +38,9 @@
         </template>
       </el-row>
     </el-form>
+    <div class="footer">
+      <slot name="footer"></slot>
+    </div>
   </div>
 </template>
 
@@ -70,7 +77,7 @@ export default defineComponent({
       })
     },
     // 输入项的间距
-    itemStyle: {
+    itemLayout: {
       type: Object,
       default: () => ({ padding: '10px 40px' })
     }
@@ -84,8 +91,12 @@ export default defineComponent({
       emit('update:modelValue', newValue)
     })
 
+    const handleValueChange = (value: any, field: string) => {
+      emit('update:modelValue', { ...props.modelValue, [field]: value })
+    }
     return {
-      formData
+      formData,
+      handleValueChange
     }
   }
 })

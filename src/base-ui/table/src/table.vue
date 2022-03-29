@@ -24,7 +24,7 @@
         width="80"
       ></el-table-column>
       <template v-for="item in propList" :key="item.prop">
-        <el-table-column v-bind="item" width="180">
+        <el-table-column v-bind="item" align="center" show-overflow-tooltip>
           <template #default="scope">
             <slot :name="item.slotName" :row="scope.row">
               {{ scope.row[item.prop] }}
@@ -33,6 +33,24 @@
         </el-table-column>
       </template>
     </el-table>
+
+    <!-- 分页 -->
+    <!-- <div class="footer" v-if="showFooter">
+      <slot name="footer">
+        <el-pagination
+          v-model:currentPage="currentPage4"
+          v-model:page-size="pageSize4"
+          :page-sizes="[100, 200, 300, 400]"
+          :small="small"
+          :disabled="disabled"
+          :background="background"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="400"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        />
+      </slot>
+    </div> -->
   </div>
 </template>
 
@@ -60,6 +78,10 @@ export default defineComponent({
     showIndexColumn: {
       type: Boolean,
       default: false
+    },
+    showFooter: {
+      type: Boolean,
+      default: true
     }
   },
   setup() {
