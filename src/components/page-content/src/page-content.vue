@@ -8,7 +8,9 @@
     >
       <!-- 1、header中的插槽 -->
       <template #headerHandler>
-        <el-button type="primary" size="medium">新建用户</el-button>
+        <el-button type="primary" size="medium" @click="handleNewClick"
+          >新建用户</el-button
+        >
       </template>
 
       <!-- 2、列表中的插槽 -->
@@ -20,6 +22,31 @@
       </template>
       <template #updateAt="scope">
         <span> {{ $filters.formatTime(scope.row.updateAt) }}</span>
+      </template>
+      <template #handler>
+        <div class="handle-btns">
+          <el-button v-if="isUpdate" icon="el-icon-edit" size="mini" type="text"
+            >编辑</el-button
+          >
+          <el-button
+            v-if="isDelete"
+            icon="el-icon-delete"
+            size="mini"
+            type="text"
+            >删除</el-button
+          >
+        </div>
+      </template>
+
+      <!-- 在page-content中动态插入剩余的插槽 -->
+      <template
+        v-for="item in otherPropSlots"
+        :key="item.prop"
+        #[item.slotName]="scope"
+      >
+        <template v-if="item.slotName">
+          <slot :name="item.slotName" :row="scope.row"></slot>
+        </template>
       </template>
     </gx-table>
   </div>
@@ -76,11 +103,29 @@ export default defineComponent({
       return store.getters[`system/pageListCount`](props.pageName)
     })
 
+    // 4.获取其他的动态插槽名称
+    const otherPropSlots = props.contentTableConfig?.propList.filter(
+      (item: any) => {
+        if (item.slotName === 'status') return false
+        if (item.slotName === 'createAt') return false
+        if (item.slotName === 'updateAt') return false
+        if (item.slotName === 'handler') return false
+        return true
+      }
+    )
+
+    // 5、新增用户
+    const handleNewClick = () => {
+      console.log('handleNewClick')
+    }
+
     return {
       dataList,
       dataCount,
       getPageData,
-      pageInfo
+      pageInfo,
+      otherPropSlots,
+      handleNewClick
     }
   }
 })
