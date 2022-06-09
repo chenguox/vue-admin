@@ -2,7 +2,9 @@
   <div class="dashboard">
     <el-row :gutter="10">
       <el-col :span="7">
-        <gx-card title="分类商品数量(饼图)">11</gx-card>
+        <gx-card title="分类商品数量(饼图)">
+          <bar-echart></bar-echart>
+        </gx-card>
       </el-col>
       <el-col :span="10">
         <gx-card title="不同城市商品销量">22</gx-card></el-col
@@ -27,11 +29,13 @@
 import { defineComponent } from 'vue'
 
 import GxCard from '@/base-ui/card'
+import { BarEchart } from '@/components/page-echarts'
 
 export default defineComponent({
   name: 'dashboard',
   components: {
-    GxCard
+    GxCard,
+    BarEchart
   },
   setup() {
     return {}
